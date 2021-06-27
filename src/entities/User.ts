@@ -1,8 +1,8 @@
-import {Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn} from "typeorm";
-import { v4 as uuid } from "uuid"
+import {Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import { v4 as uuid } from 'uuid';
 
-@Entity("users")
-export class User {
+@Entity('users')
+class User {
 
     @PrimaryColumn()
     id: string;
@@ -24,7 +24,9 @@ export class User {
 
     constructor() {
         if(!this.id) {
-            this.id = uuid()
+            this.id = uuid();
         }
     }
 }
+
+export { User };
