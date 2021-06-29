@@ -4,62 +4,62 @@ export class CreateCompliments1624889767813 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
-            new Table({ 
+            new Table({
                 name: 'compliments',
                 columns: [
-                    { 
+                    {
                         name: 'id',
                         type: 'uuid',
-                        isPrimary: true
+                        isPrimary: true,
                     },
-                    { 
+                    {
                         name: 'user_sender',
-                        type: 'uuid'
+                        type: 'uuid',
                     },
-                    { 
+                    {
                         name: 'user_receiver',
-                        type: 'uuid'
+                        type: 'uuid',
                     },
-                    { 
+                    {
                         name: 'tag_id',
-                        type: 'uuid'
+                        type: 'uuid',
                     },
-                    { 
+                    {
                         name: 'message',
-                        type: 'varchar'
+                        type: 'varchar',
                     },
-                    { 
+                    {
                         name: 'created_at',
                         type: 'timestamp',
-                        default: 'now()'
-                    }
+                        default: 'now()',
+                    },
                 ],
                 foreignKeys: [
-                    { 
+                    {
                         name: 'FKUserSenderCompliments',
                         referencedTableName: 'users',
                         referencedColumnNames: ['id'],
                         columnNames: ['user_sender'],
                         onDelete: 'SET NULL',
-                        onUpdate: 'SET NULL'
+                        onUpdate: 'SET NULL',
                     },
-                    { 
+                    {
                         name: 'FKUserReceiverCompliments',
                         referencedTableName: 'users',
                         referencedColumnNames: ['id'],
                         columnNames: ['user_receiver'],
                         onDelete: 'SET NULL',
-                        onUpdate: 'SET NULL'
+                        onUpdate: 'SET NULL',
                     },
-                    { 
+                    {
                         name: 'FKTagCompliments',
-                        referencedTableName: 'users',
+                        referencedTableName: 'tags',
                         referencedColumnNames: ['id'],
                         columnNames: ['tag_id'],
                         onDelete: 'SET NULL',
-                        onUpdate: 'SET NULL'
-                    }
-                ]
+                        onUpdate: 'SET NULL',
+                    },
+                ],
             })
         );
     }
