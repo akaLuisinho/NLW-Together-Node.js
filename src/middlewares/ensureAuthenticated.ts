@@ -24,5 +24,4 @@ export function ensureAuthenticated(request: Request, response: Response, next: 
     } catch (error) {
         return response.status(401).end;
     }
-
 }
