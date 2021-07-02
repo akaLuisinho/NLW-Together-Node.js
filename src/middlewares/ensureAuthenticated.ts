@@ -8,12 +8,12 @@ interface IPayload {
 export function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
 
     const authorization = request.headers.authorization;
-    const [, token] = authorization.split(' ');
     
-    
-    if(!token) {
+    if(!authorization) {
         return response.status(401).end;
     }
+    
+    const [, token] = authorization.split(' ');
     
     try {
         const { sub } = verify(token, 'ae2774ab7bac678b3faa7381ce51238c') as IPayload;
